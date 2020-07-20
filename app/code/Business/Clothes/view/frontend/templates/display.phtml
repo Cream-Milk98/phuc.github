@@ -1,0 +1,21 @@
+<?php 
+$product = $block->displayProductbyIsSpecial();
+?>
+<table class="table table-hover">
+	<thead>
+		<tr>
+			<th>id</th>
+			<th>sku</th>
+			<th>Is Special</th>
+		</tr>
+	</thead>
+	<tbody>
+		<?php foreach ($product as $key => $value): ?>
+			<tr>
+				<td><?php echo $value->getData('entity_id') ?></td>
+				<td><?php echo $block->getProductBySku($value->getData('sku'))->getName() ?></td>
+				<td><?php echo $value->getData('is_special') ?></td>
+			</tr>
+		<?php endforeach ?>
+	</tbody>
+</table>
