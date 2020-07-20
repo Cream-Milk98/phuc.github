@@ -1,6 +1,6 @@
 <?php
 
-namespace Business\Shoes\Plugin\Checkout\Model;
+namespace Business\Clothes\Plugin\Checkout\Model;
 
 
 use Magento\Framework\Exception\LocalizedException;

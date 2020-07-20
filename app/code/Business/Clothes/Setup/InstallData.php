@@ -4,7 +4,7 @@
  * See COPYING.txt for license details.
  */
 
-namespace Business\Hockaido\Setup;
+namespace Business\Clothes\Setup;
 
 use Magento\Framework\Setup\InstallDataInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
@@ -47,9 +47,9 @@ class InstallData implements InstallDataInterface
                 'type' => 'varchar',
                 'label' => 'is_special',
                 'input' => 'select',
-                'source' => 'Business\Hockaido\Model\Attribute\Source\Material',
-                'frontend' => 'Business\Hockaido\Model\Attribute\Frontend\Material',
-                'backend' => 'Business\Hockaido\Model\Attribute\Backend\Material',
+                'source' => 'Business\Clothes\Model\Attribute\Source\Material',
+                'frontend' => 'Business\Clothes\Model\Attribute\Frontend\Material',
+                'backend' => 'Business\Clothes\Model\Attribute\Backend\Material',
                 'required' => false,
                 'sort_order' => 50,
                 'global' => \Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface::SCOPE_GLOBAL,

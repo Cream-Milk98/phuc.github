@@ -4,7 +4,7 @@
  * See COPYING.txt for license details.
  */
 
-namespace Business\Hockaido\Model\Attribute\Backend;
+namespace Business\Clothes\Model\Attribute\Backend;
 
 class Material extends \Magento\Eav\Model\Entity\Attribute\Backend\AbstractBackend
 {

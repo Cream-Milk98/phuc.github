@@ -1,5 +1,5 @@
 <?php
-namespace Business\Hockaido\Model\Attribute\Frontend;
+namespace Business\Clothes\Model\Attribute\Frontend;
 
 class Material extends \Magento\Eav\Model\Entity\Attribute\Frontend\AbstractFrontend
 {

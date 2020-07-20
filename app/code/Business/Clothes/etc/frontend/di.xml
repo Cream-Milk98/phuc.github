@@ -1,5 +1,7 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
-    <module name="Business_Shoes"/>
+    <type name="Magento\Checkout\Model\Cart">
+        <plugin name="beforeAddProduct" type="Business\Clothes\Plugin\Checkout\Model\Cart"/>
+    </type>
 </config>

@@ -4,7 +4,7 @@
  * See COPYING.txt for license details.
  */
 
-namespace Business\Hockaido\Model\Attribute\Source;
+namespace Business\Clothes\Model\Attribute\Source;
 
 class Material extends \Magento\Eav\Model\Entity\Attribute\Source\AbstractSource
 {
