@@ -28,6 +28,7 @@ define([
                        $('#demo-ajax').html('End');
 
                    }
+                   
                }, 1000);
             },
                 error: function (e) {
