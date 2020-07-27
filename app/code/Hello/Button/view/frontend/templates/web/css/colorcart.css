@@ -1,0 +1,10 @@
+.newcolor
+{
+    background: #29487d !important;
+    box-shadow: 1px 5px 5px 1px rgba(66, 103, 178, 0.51);
+    font-size: 23px !important;
+    font-weight: bold !important;
+    border-radius: 10px;
+    height: 60px;
+    font-family: cursive !important;
+}
