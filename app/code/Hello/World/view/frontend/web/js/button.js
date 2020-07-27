@@ -19,11 +19,14 @@ define([
                setInterval(function() {
                    $('#demo-ajax').html(time);
                    time--;
+                   $('#demo-ajax').css('color','red');
                    if ( time < 0){
                        $(thisButton).html(config.message);
                        $(thisButton).css('color','white');
                        $(thisButton).css('background-color','black');
+                       $('#demo-ajax').css('color','black');
                        $('#demo-ajax').html('End');
+
                    }
                }, 1000);
             },
