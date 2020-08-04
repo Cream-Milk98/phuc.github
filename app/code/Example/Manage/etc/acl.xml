@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Create Acl for Admin Permission -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+   <acl>
+       <resources>
+           <resource id="Magento_Backend::admin"> <!-- Indicated you at admin section -->
+                    <resource id="Example_Manage::example" title="Example" sortOrder="30">
+                       <!-- Create an  ACL resource id for Edit Example Url for this module -->
+                       <resource id="Example_Manage::example_edit" title="Edit" sortOrder="10"/>
+                       <!-- Create an  ACL resource id for Delete Action Url for this module -->
+                        <resource id="Example_Manage::example_delete" title="Delete" sortOrder="20"/>
+                   </resource>                    
+               </resource>
+       </resources>
+   </acl>
+</config>
