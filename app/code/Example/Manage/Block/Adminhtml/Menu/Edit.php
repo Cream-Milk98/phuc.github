@@ -1,48 +1,41 @@
 <?php
 
-namespace Example\Manage\Block\Adminhtml;
+namespace Example\Manage\Block\Adminhtml\Menu;
 
 use Magento\Framework\App\Request\Http;
 use Magento\Framework\View\Element\Template;
 use Magento\Framework\View\Element\Template\Context;
 use Magento\Framework\View\Result\PageFactory;
-use Example\Manage\Model\StudentFactory;
+use Example\Manage\Model\PostsFactory;
 
 class Edit extends Template
 {
-    protected $_pageFactory;
-    protected $_postLoader;
-    protected $_request;
+    /**
+     * @var \Example\Manage\Model\PostsFactory
+     */
+    private $postsFactory;
 
+    /**
+     * inject the model Class Factory for getting data
+     */
     public function __construct(
-        Context $context,
-        PageFactory $pageFactory,
-        StudentFactory $postLoader,
-        Http $request,
-        array $data = []
-    )
+        \Magento\Framework\View\Element\Template\Context $context,
+        \Example\Manage\Model\PostsFactory $postsFactory,
+        array $data = array())
     {
-        $this->_pageFactory = $pageFactory;
-        $this->_postLoader = $postLoader;
-        $this->_request = $request;
-        return parent::__construct($context, $data);
+        parent::__construct($context, $data);
+        $this->postsFactory = $postsFactory;
     }
 
-    public function execute()
+    public function getJohnInfo()
     {
-        return $this->_pageFactory->create();
-    }
+        $postsModel = $this->postsFactory->create();
 
-    public function getId()
-    {
-        $id = $this->_request->getParam('post_id');
-        return $id;
-    }
+        /**
+         * Using primary Id
+         */
+        $postsModel->load('post_id'); //John Primary
 
-    public function get($id)
-    {
-        $custom = $this->_postLoader->create();
-        $custom->load($id);
-        return $custom;
+        return $postsModel;
     }
 }

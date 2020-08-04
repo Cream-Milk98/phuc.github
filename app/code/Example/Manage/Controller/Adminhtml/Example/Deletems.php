@@ -10,19 +10,19 @@ use Magento\Framework\App\Action\HttpPostActionInterface;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Backend\App\Action\Context;
 use Magento\Ui\Component\MassAction\Filter;
-use Example\Manage\Model\PostsFactory;
+use Example\Manage\Model\ResourceModel\Posts\CollectionFactory;
 
 /**
  * Class MassDelete
  */
-class MassDelete extends \Magento\Backend\App\Action implements HttpPostActionInterface
+class Deletems extends \Magento\Backend\App\Action implements HttpPostActionInterface
 {
     /**
      * Authorization level of a basic admin session
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Cms::block';
+    const ADMIN_RESOURCE = 'Example_Manage::example_delete';
 
     /**
      * @var Filter
@@ -65,6 +65,6 @@ class MassDelete extends \Magento\Backend\App\Action implements HttpPostActionIn
 
         /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
         $resultRedirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);
-        return $resultRedirect->setPath('*/*/');
+        return $resultRedirect->setPath('manage/example/index');
     }
 }

@@ -1,6 +1,6 @@
 <?php
 /**
- * Create edit page for Update data 
+ * Create edit page for Update data
  */
 
 namespace Example\Manage\Controller\Adminhtml\Example;
@@ -8,89 +8,53 @@ namespace Example\Manage\Controller\Adminhtml\Example;
 
 class Edit extends  \Magento\Backend\App\Action
 {
-
-    /**
-     * @var \Magento\Framework\Registry
-     */
     private $registry;
-
-    /**
-     * @var \Magento\Framework\View\Result\PageFactory
-     */
     private $resultPageFactory;
-
-    /**
-     * @var \StackExchange\Example\Model\StudentFactory
-     */
-    private $yourModelVariableFactory;
-
-    /**
-     * 
-     * Add Acl Resource id For Permission at admin section
-     */
+    private $postsFactory;
     const ADMIN_RESOURCE ="Example_Manage::example_edit";
-    
+
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
-        \Example\Manage\Model\{YourModel}Factory $yourModelVariableFactory,
+        \Example\Manage\Model\PostsFactory $postsFactory,
         \Magento\Framework\View\Result\PageFactory $resultPageFactory,
-        \Magento\Framework\Registry $registry  
+        \Magento\Framework\Registry $registry
     ) {
-        $this->yourModelVariableFactory = $yourModelVariableFactory;  
+        $this->postsFactory = $postsFactory;
         $this->resultPageFactory = $resultPageFactory;
-        $this->registry = $registry;        
+        $this->registry = $registry;
         parent::__construct($context);
     }
 
     public function execute() {
-        
-        /**
-         * init Model using Model Factory
-         */
-        $yourModel= $this->yourModelVariableFactory->create();
-        /**
-         * for  update a row data, we need  primary  field value
-         * which URL param "example_id" = Database example table "id" field
-         */ 
-        $id = $this->getRequest()->getParam('{Paramster_For_URL}');
+
+        $postsModel= $this->postsFactory->create();
+        $id = $this->getRequest()->getParam('example_id');
         if($id){
             /**
              * Load a record data from data using model
              */
-            $yourModel->load($id);
+            $postsModel->load($id);
             /**
-             * Redirect to listing page if a record does not exit at database 
+             * Redirect to listing page if a record does not exit at database
              * with request parameter
              */
-            if(!$yourModel->getId()){
-               $resultRedirect =  $this->resultRedirectFactory->create();
-               return $resultRedirect->setPath('*/*/listing');
+            if(!$postsModel->getId()){
+                $resultRedirect =  $this->resultRedirectFactory->create();
+                return $resultRedirect->setPath('manage/example/index');
             }
-            
+
         }
-        /**
-         * Save Model Data to a registry variable for future purpose
-         * Variable name is user defined
-         */
-        $this->registry->register('{Registry_Variable}',$yourModel);
-        
+        $this->registry->register('mageplaza_helloworld_post',$postsModel);
         $resultPage =$this->resultPageFactory->create();
         $resultPage->getConfig()->setKeywords(__('Edit Page'));
-        /**
-         * Left menu Select
-         */
-        $resultPage->setActiveMenu('{MENU_ID}');
-        /**
-         * Set Page title
-         */
-        
+        $resultPage->setActiveMenu('Example_Manage::menu');
         $resultPage->getConfig()->getTitle()->prepend('Example Module');
         $pageTitltPrefix = __('Edit Page for %1',
-                $yourModel->getId()?$yourModel->getId(): __('New entry')
-                );
+            $postsModel->getId()?$postsModel->getName(): __('New entry')
+        );
         $resultPage->getConfig()->getTitle()->prepend($pageTitltPrefix);
         return $resultPage;
-        
+
     }
 
 }

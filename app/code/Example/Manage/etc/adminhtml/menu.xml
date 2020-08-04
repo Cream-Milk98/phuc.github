@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
         <menu>
-        <add id="Example_Manage::menu" title="Menu" translate="title" module="Example_Manage"  sortOrder="50" dependsOnModule="Example_Manage" resource="Example_Manage::menu"/>
+            <add id="Example_Manage::menu" title="Daily Deals" parent="Magento_Backend::marketing" translate="title" module="Example_Manage"  sortOrder="10" dependsOnModule="Example_Manage" resource="Example_Manage::menu"/>
+            <add id="Example_Manage::index" title="Manage" translate="title" module="Example_Manage" parent="Example_Manage::menu" sortOrder="10" dependsOnModule="Example_Manage" action="manage/example" resource="Example_Manage::example"/>
 
-        <add id="Example_Manage::index" title="Manage" translate="title" module="Example_Manage" parent="Example_Manage::menu" sortOrder="10" dependsOnModule="Example_Manage" action="manage/example" resource="Example_Manage::example"/>
+            <add id="Example_Manage::example_configuration" title="Configuration" module="Example_Manage" sortOrder="5" parent="Example_Manage::menu" action="adminhtml/system_config/edit/section/example_section" resource="Example_Manage::example_configuration"/>
     </menu>
 </config>

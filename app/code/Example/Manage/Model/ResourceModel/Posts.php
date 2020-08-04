@@ -1,14 +1,14 @@
 <?php
 
 /**
- * Create Resource Model name for model  Student \StackExchange\Example\Model\Student
- * As Model name Student then Resource model is Student
+ * Create Resource Model name for model  Posts \StackExchange\Example\Model\Posts
+ * As Model name Posts then Resource model is Posts
  */
 
 namespace Example\Manage\Model\ResourceModel;
 
 
-class Student extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
+class Posts extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
 {
     
     /**
