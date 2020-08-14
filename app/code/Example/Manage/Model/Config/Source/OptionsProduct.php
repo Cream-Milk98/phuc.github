@@ -2,28 +2,24 @@
 
 namespace Example\Manage\Model\Config\Source;
 
-use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory as ProductCollection;
+use Magento\Catalog\Model\ResourceModel\Product\CollectionFactory;
 
 use Magento\Framework\Option\ArrayInterface;
 use Magento\Catalog\Model\ProductRepository;
-use Example\Manage\Model\ResourceModel\Posts\CollectionFactory as DealsCollection;
 
 class OptionsProduct implements ArrayInterface
 {
     protected $options;
     protected $_respository;
-    protected $_productFactory;
-    protected $_dealFactory;
+    protected $collectionFactory;
 
     public function __construct(
-        ProductCollection $productFactory,
-        ProductRepository $productRepository,
-        DealsCollection $dealFactory
+        CollectionFactory $collectionFactory,
+        ProductRepository $productRepository
     )
     {
-        $this->_productFactory = $productFactory;
+        $this->collectionFactory = $collectionFactory;
         $this->_respository = $productRepository;
-        $this->_dealFactory = $dealFactory;
     }
 
     public function getProductBySku($sku)
@@ -34,7 +30,7 @@ class OptionsProduct implements ArrayInterface
     public function toOptionArray()
     {
         $options[] = array('label' => '--- Product List ---');;
-        $products = $this->_productFactory->create();
+        $products = $this->collectionFactory->create();
         if ($products->getSize()) {
             foreach ($products as $product) {
                 $prod = $this->getProductBySku($product->getData('sku'))->getName();
