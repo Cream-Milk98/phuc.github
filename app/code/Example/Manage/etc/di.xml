@@ -1,0 +1,16 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="manage_ui_example_data_source" xsi:type="string">HelloWorldVirtualType</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="HelloWorldVirtualType" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">product_daily_deals</argument>
+            <argument name="resourceModel" xsi:type="string">Example\Manage\Model\ResourceModel\Posts</argument>
+            <argument name="instanceName" xsi:type="string">\Magento\Catalog\Model\Grid\JoinProductCollection</argument>
+        </arguments>
+    </virtualType>
+</config>

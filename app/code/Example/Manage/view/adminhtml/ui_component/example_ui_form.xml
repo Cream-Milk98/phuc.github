@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">example_ui_form.example_ui_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">News Information</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="save" class="Example\Manage\Block\Adminhtml\Menu\Edit\SaveButton"/>
+            <button name="reset" class="Example\Manage\Block\Adminhtml\Menu\Edit\ResetButton"/>
+            <button name="back" class="Example\Manage\Block\Adminhtml\Menu\Edit\BackButton"/>
+        </buttons>
+        <namespace>example_ui_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>example_ui_form.example_ui_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="example_ui_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="manage/example/save"/>
+        </settings>
+        <dataProvider class="Example\Manage\Ui\DataProvider\Form\DataProvider" name="example_ui_form_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="general">
+        <settings>
+            <label/>
+        </settings>
+        <field name="id" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">example_ui</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <visible>false</visible>
+                <dataScope>id</dataScope>
+            </settings>
+        </field>
+
+        <field name="sku">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Example\Manage\Model\Config\Source\OptionsProduct</item>
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Product Name</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="source" xsi:type="string">item</item>
+                    <item name="dataScope" xsi:type="string">sku</item>
+                    <item name="sortOrder" xsi:type="number">10</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+
+        <field name="status" formElement="select" sortOrder="20">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Status</label>
+                <dataScope>status</dataScope>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options>
+                            <option name="1" xsi:type="array">
+                                <item name="value" xsi:type="string">1</item>
+                                <item name="label" xsi:type="string">Enable</item>
+                            </option>
+                            <option name="2" xsi:type="array">
+                                <item name="value" xsi:type="string">0</item>
+                                <item name="label" xsi:type="string">Disable</item>
+                            </option>
+                        </options>
+                        <caption translate="true">-- Please Select --</caption>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+
+        <field name="store_view" formElement="select">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Example\Manage\Model\Config\Source\OptionsStores</item>
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string" translate="true">Store Name</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="source" xsi:type="string">item</item>
+                    <item name="dataScope" xsi:type="string">store_view</item>
+                    <item name="sortOrder" xsi:type="number">30</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+
+        <field name="price_deals" sortOrder="40" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">example_ui</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Price Deals</label>
+                <dataScope>price_deals</dataScope>
+            </settings>
+        </field>
+
+
+        <field name="quantity" sortOrder="50" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">example_ui</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Quantity</label>
+                <dataScope>quantity</dataScope>
+            </settings>
+        </field>
+
+        <field name="start_time" formElement="date">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">example_ui</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="validate-date" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Start Time</label>
+                <dataScope>start_time</dataScope>
+            </settings>
+        </field>
+
+        <field name="end_time" formElement="date">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">example_ui</item>
+                    <item name="timezone" xsi:type="string" translate="true">false</item>
+<!--                    <item name="options" xsi:type="array">-->
+<!--                        <item name="dateFormat" xsi:type="string">yyyy-MM-dd</item>-->
+<!--                        <item name="timeFormat" xsi:type="string">HH:mm:ss</item>-->
+<!--                        <item name="showsTime" xsi:type="boolean">true</item>-->
+<!--                    </item>-->
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="validate-date" xsi:type="boolean">false</rule>
+                </validation>
+                <dataType>string</dataType>
+                <label translate="true">End Time</label>
+                <dataScope>end_time</dataScope>
+            </settings>
+        </field>
+    </fieldset>
+</form>
