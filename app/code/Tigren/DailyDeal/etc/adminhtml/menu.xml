@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+        <menu>
+        	
+            <add id="Tigren_DailyDeal::menu" title="Daily Deals"  translate="title" module="Tigren_DailyDeal"  sortOrder="40" dependsOnModule="Tigren_DailyDeal" resource="Tigren_DailyDeal::menu"/>
+
+            <add id="Tigren_DailyDeal::index" title="Manage" translate="title" module="Tigren_DailyDeal" parent="Tigren_DailyDeal::menu" sortOrder="10" dependsOnModule="Tigren_DailyDeal" action="manage/example" resource="Tigren_DailyDeal::example"/>
+
+            <add id="Tigren_DailyDeal::example_configuration" title="Configuration" module="Tigren_DailyDeal" sortOrder="5" parent="Tigren_DailyDeal::menu" action="adminhtml/system_config/edit/section/example_section" resource="Tigren_DailyDeal::example_configuration"/>
+    </menu>
+</config>
