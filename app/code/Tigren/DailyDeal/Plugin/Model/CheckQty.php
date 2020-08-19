@@ -30,7 +30,7 @@ class CheckQty
                 $qty = $myTable->getItemByColumnValue('sku',$Sku)->getData('quantity');
                 if ($itemQty >= $qty)
                 {
-                    throw new LocalizedException(__('can only add maximum <?= $qty ?> Product to Cart'));
+                    throw new LocalizedException(__('can only add maximum %1 Product to Cart',$qty));
                 }
             }
 
@@ -40,7 +40,7 @@ class CheckQty
             $qty = $myTable->getItemByColumnValue('sku',$Sku)->getData('quantity');
             if ($requestInfo['qty'] > $qty)
             {
-                throw new LocalizedException(__('can only add maximum <?= $qty ?> Product to Cart'));
+                throw new LocalizedException(__('can only add maximum %1 Product to Cart',$qty));
             }
         }
         return [$productInfo, $requestInfo];
