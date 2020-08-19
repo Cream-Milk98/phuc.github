@@ -27,21 +27,23 @@ class CheckQty
         }
         foreach($items as $item )
         {
-            $sku = $item->getSku();
-            if (in_array($sku,$mySku))
+            $sku[] = $item->getSku();
+        }
+        if (in_array($Sku,$sku))
+        {
+            $itemQty = $item->getQty();
+            $qty = $myTable->getItemByColumnValue('sku',$Sku)->getData('quantity');
+            $timeStart = $myTable->getItemByColumnValue('sku', $Sku)->getData('start_time');
+            $timeEnd = $myTable->getItemByColumnValue('sku', $Sku)->getData('end_time');
+            $status = $myTable->getItemByColumnValue('sku', $Sku)->getData('status');
+            $now = date('Y-m-d H:i:s');
+            if ($itemQty >= $qty && $timeStart <= $now && $timeEnd >= $now && $status == 1 && $enable == 1)
             {
-                $itemQty = $item->getQty();
-                $qty = $myTable->getItemByColumnValue('sku',$Sku)->getData('quantity');
-                $timeStart = $myTable->getItemByColumnValue('sku', $Sku)->getData('start_time');
-                $timeEnd = $myTable->getItemByColumnValue('sku', $Sku)->getData('end_time');
-                $status = $myTable->getItemByColumnValue('sku', $Sku)->getData('status');
-                $now = date('Y-m-d H:i:s');
-                if ($itemQty >= $qty && $timeStart <= $now && $timeEnd >= $now && $status == 1 && $enable == 1)
-                {
-                    throw new LocalizedException(__('can only add maximum %1 Product to Cart',$qty));
-                }
+                throw new LocalizedException(__('can only add maximum %1 Product to Cart',$qty));
             }
-
+            else {
+                return [$productInfo, $requestInfo];
+            }
         }
         if (in_array($Sku,$mySku))
         {
@@ -53,6 +55,9 @@ class CheckQty
             if ($requestInfo['qty'] > $qty  && $timeStart <= $now && $timeEnd >= $now && $status == 1 && $enable == 1)
             {
                 throw new LocalizedException(__('can only add maximum %1 Product to Cart',$qty));
+            }
+            else {
+                return [$productInfo, $requestInfo];
             }
         }
         return [$productInfo, $requestInfo];
