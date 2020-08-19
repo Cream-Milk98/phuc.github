@@ -3,4 +3,7 @@
     <type name="Magento\Catalog\Model\Product">
         <plugin name="change_product" type="Tigren\DailyDeal\Plugin\Model\Product" />
     </type>
+    <type name="Magento\Checkout\Model\Cart">
+        <plugin name="LimitQtyAddingProductToCart" type="Tigren\DailyDeal\Plugin\Model\CheckQty"/>
+    </type>
 </config>

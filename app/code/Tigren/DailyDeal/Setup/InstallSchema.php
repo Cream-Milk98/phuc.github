@@ -77,10 +77,10 @@ class InstallSchema implements \Magento\Framework\Setup\InstallSchemaInterface
                 $installer->getTable('product_daily_deals'),
                 $setup->getIdxName(
                     $installer->getTable('product_daily_deals'),
-                    ['sku', 'store_view'],
+                    ['sku'],
                     \Magento\Framework\DB\Adapter\AdapterInterface::INDEX_TYPE_FULLTEXT
                 ),
-                ['sku', 'store_view'],
+                ['sku'],
                 \Magento\Framework\DB\Adapter\AdapterInterface::INDEX_TYPE_FULLTEXT
             );
         }

@@ -1,6 +1,6 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
-    <event name="checkout_cart_product_add_after">
+    <event name="controller_action_predispatch_checkout_index_index">
         <observer name="check_cart" instance="Tigren\DailyDeal\Observer\CheckCart"/>
     </event>
 </config>
